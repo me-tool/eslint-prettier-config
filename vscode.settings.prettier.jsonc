@@ -1,0 +1,43 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript, javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // 会覆盖掉全局的设置
+    // 可以针对语言设置不同的  brackets
+    // "editor.language.brackets": [],
+    // 可以指定 brackets 自定义颜色，因为默认 brackets 颜色是不开启的
+    // "editor.language.colorizedBracketPairs": []
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json, jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  // 以下是和 airbnb 的 eslint 保持一致
+  "prettier.arrowParens": "always", // 箭头函数如果只有一个参数，添加括号
+  "prettier.endOfLine": "lf",
+  "prettier.ignorePath": ".prettierignore",
+  "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 100,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  // 行尾逗号,默认none,可选 none|es5|all
+  // es5 包括es5中的数组、对象
+  // all 包括函数对象等所有可选
+  "prettier.trailingComma": "all",
+  "prettier.useEditorConfig": false,
+  "prettier.useTabs": false // 插入空格而不是 tab
+}
