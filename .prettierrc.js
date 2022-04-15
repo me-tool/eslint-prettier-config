@@ -2,7 +2,6 @@
 module.exports = {
   arrowParens: 'always', // 箭头函数如果只有一个参数，添加括号
   endOfLine: 'lf', // 结束行形式
-  ignorePath: '.prettierignore',
   bracketSpacing: true, // 是否保留对象内侧两端的空格，比如 { foo: bar } 和 {foo:bar} 的区别
   jsxBracketSameLine: true, // 多属性html标签的‘>’折行放置
   printWidth: 100,
@@ -14,7 +13,6 @@ module.exports = {
   // es5 包括es5中的数组、对象
   // all 包括函数对象等所有可选
   trailingComma: 'all',
-  useEditorConfig: false,
   useTabs: false, // 插入空格而不是 tab
   tabWidth: 2,
   requirePragma: false, // 无需顶部注释即可格式化

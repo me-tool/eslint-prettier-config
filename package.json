@@ -1,7 +1,7 @@
 {
   "name": "@me-tool/eslint-prettier-config",
   "description": "Base repository for eslint + prettier configuration for other projects",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "main": "index.js",
   "author": "halo xie",
   "private": false,

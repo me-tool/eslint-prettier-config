@@ -11,6 +11,7 @@
 7. https://github.com/import-js/eslint-plugin-import
 8. http://eslint.cn/docs/user-guide/configuring
 9. https://zhuanlan.zhihu.com/p/386373956
+10. https://zhuanlan.zhihu.com/p/347339865 (VSCode 中 ESLint、Prettier 配置冲突问题原因及解决方案)
 
 # 项目说明
 
@@ -23,16 +24,16 @@
 
 ## Package.json Dependencies
 
-| Package                                                                              | Description                                                                                                        |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| [confusing-browser-globals](https://www.npmjs.com/package/confusing-browser-globals) | 提供常见的全局属性，这里用在 `no-restricted-globals` ESlint rule 中，避免声明变量和全局变量冲突                    |
-| [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)       | 关掉 Prettier 中不需要或者会导致冲突的 rule，_是为了解决 Prettier 和 ESlint 规则冲突的安装包之一_                  |
-| [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)       | ESLint 标准，与之常见的是 `Airbnb` 的，以 `vue-cli` 创建项目来说， 支持 `Standard`、 `Airbnb`、`None`(自定义) 三种 |
-| [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)           | ESlint 关于 Import 的最佳实践集合                                                                                  |
-| [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)               | ESlint 关于 Node 的最佳实践(?)集合                                                                                 |
-| [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)       | 将 Prettier 像 ESlint Rules 使用，_是为了解决 Prettier 和 ESlint 规则冲突的安装包之一_                             |
-| [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)         | ESlint 关于 Promise 的最佳实践(?)集合                                                                              |
-| [eslint-plugin-vue](https://www.npmjs.com/package/eslint-plugin-vue)                 | VUE 官方的关于 ESlint 的最佳实践集合                                                                               |
+| Package                                                                              | Description                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [confusing-browser-globals](https://www.npmjs.com/package/confusing-browser-globals) | 提供常见的全局属性，这里用在 `no-restricted-globals` ESlint rule 中，避免声明变量和全局变量冲突                                                                                                                                 |
+| [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)       | 关掉 Prettier 中不需要或者会导致冲突的 rule，_是为了解决 Prettier 和 ESlint 规则冲突的安装包之一_                                                                                                                               |
+| [eslint-config-standard](https://www.npmjs.com/package/eslint-config-standard)       | ESLint 标准，与之常见的是 `Airbnb` 的，以 `vue-cli` 创建项目来说， 支持 `Standard`、 `Airbnb`、`None`(自定义) 三种                                                                                                              |
+| [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)           | ESlint 关于 Import 的最佳实践集合                                                                                                                                                                                               |
+| [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node)               | ESlint 关于 Node 的最佳实践(?)集合                                                                                                                                                                                              |
+| [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)       | 将 Prettier 像 ESlint Rules 使用，_是为了解决 Prettier 和 ESlint 规则冲突的安装包之一_, 该 eslint 插件用 prettier 替代了 eslint 本身对于代码美化部分的功能，_`而其中的配置是官方默认配置，并且不从 .prettierrc 文件中读取配置`_ |
+| [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise)         | ESlint 关于 Promise 的最佳实践(?)集合                                                                                                                                                                                           |
+| [eslint-plugin-vue](https://www.npmjs.com/package/eslint-plugin-vue)                 | VUE 官方的关于 ESlint 的最佳实践集合                                                                                                                                                                                            |
 
 ## index.js Extends
 
@@ -52,7 +53,9 @@
 > 为了统一代码格式规范，以及提升代码可读性，推荐安装如下插件
 > 下面插件安装均可以在 VScode 自身的插件管理中找到
 
-### 编辑器配置，必须
+### VSCode 插件，必须
+
+> 用编辑器的 Prettier 插件来美化代码，ESLint 插件来检查代码质量
 
 1.  Prettier
 2.  ESLint
@@ -97,6 +100,12 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.markdownlint": true,
+    "source.fixAll.stylelint": true,
+    "source.fixAll.tslint": true
+  },
   // 以下是和 airbnb 的 eslint 保持一致
   "prettier.arrowParens": "always", // 箭头函数如果只有一个参数，添加括号
   "prettier.endOfLine": "lf",
@@ -124,6 +133,7 @@ yarn add @me-tool/eslint-prettier-config --save-dev
 
 #
 yarn add eslint prettier husky lint-staged --save-dev
+
 ```
 
 ## 项目使用引用
@@ -206,9 +216,9 @@ npx husky add .husky/pre-commit "npm run lint"
     "lint": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": ["prettier --write", "eslint --fix", "git add"],
-    "*.js": ["prettier --write", "eslint --cache --fix", "git add"],
-    "*.vue": ["prettier --write", "eslint --cache --fix", "git add"],
+    "*.ts?(x)": ["prettier --write", "eslint --cache --fix --ext .tsx --ext .ts", "git add"],
+    "*.js?(x)": ["prettier --write", "eslint --cache --fix --ext .js --ext .jsx", "git add"],
+    "*.vue": ["prettier --write", "eslint --cache --fix --ext .vue", "git add"],
     "*.{json,md,yml,css}": ["prettier --write", "git add"]
   }
 }
@@ -302,3 +312,7 @@ module.exports = {
   },
 };
 ```
+
+### 测试中遇到的坑
+
+1. 修改 node_modules 进行更新，需要重新打开项目让 prettier 重新加载，否则会是之前的缓存效果

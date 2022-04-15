@@ -5,7 +5,7 @@
  */ module.exports = {
   rules: {
     'array-bracket-spacing': ['error', 'never'], // 是否允许非空数组里面有多余的空格
-    camelcase: 'error', // 强制(小)驼峰法命名
+    camelcase: ['error', { properties: 'never', ignoreDestructuring: false }], // 属性强制(小)驼峰法命名
     // 要求或禁止末尾逗号
     'comma-dangle': [
       'error',

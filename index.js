@@ -7,7 +7,12 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
-    'plugin:prettier/recommended',
+    'prettier',
+    /**
+     * 这里没有使用 eslint-plugin-prettier,只使用了eslint-config-prettier
+     * 会因为需要进行使用编辑器的 prettier 进行优化，做到保存的时候即优化
+     */
+    // 'plugin:prettier/recommended',
     // 'plugin:vue/vue3-recommended', // Vue.js 3.x.
     'plugin:vue/recommended', // Vue.js 2.x.
 
