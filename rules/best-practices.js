@@ -7,7 +7,7 @@ module.exports = {
   rules: {
     'accessor-pairs': 'off', // 在对象中使用 getter/setter
     'block-scoped-var': 'error', // 块语句中使用var
-    complexity: ['error', 6], // 循环复杂度，考虑最小原则拆分，每个块的复杂度不能超过 6
+    complexity: ['off', 10], // 循环复杂度，考虑最小原则拆分，每个块的复杂度不能超过 6
     'consistent-return': 'off', // 总是指定返回值或隐式返回 undefined
     curly: 'error', // 强制所有控制语句使用一致的括号风格，常见会在 if 等块状语言添加 {}
     'default-case': 'error', // switch语句最后必须有default
@@ -50,7 +50,26 @@ module.exports = {
     'no-new-func': 'error', // 禁止使用 new Function
     'no-new-wrappers': 'error', // 禁止使用 new 创建包装实例，new String/new Boolean/new Number
     'no-octal-escape': 'error', //禁止使用八进制转义序列
-    'no-param-reassign': ['error', { props: true }], // 禁止对函数参数再赋值，对参数的任何属性的修改
+    // 禁止对函数参数再赋值，对参数的任何属性的修改
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'acc', // for reduce accumulators
+          'accumulator', // for reduce accumulators
+          'e', // for e.return value
+          'ctx', // for Koa routing
+          'context', // for Koa routing
+          'req', // for Express requests
+          'request', // for Express requests
+          'res', // for Express responses
+          'response', // for Express responses
+          '$scope', // for Angular 1 scopes
+          'staticContext', // for ReactRouter context
+        ],
+      },
+    ],
     'no-proto': 'error', // 禁止使用 __proto__ 属性
     // 禁止使用对象的某些属性
     'no-restricted-properties': [

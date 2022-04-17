@@ -46,6 +46,7 @@
     'func-style': ['off', 'expression'], // todo:enable 函数风格，(默认) 要求使用函数表达式而不是函数声明
     'id-length': 'off', // 变量名长度
     'id-match': 'off', // 要求标识符匹配特定的正则表达式
+    // todo:fix implicit-arrow-linebreak + printWidth max-lens
     'implicit-arrow-linebreak': ['error', 'beside'], // 强制隐式返回的箭头函数体的位置
     //缩进风格
     indent: [
