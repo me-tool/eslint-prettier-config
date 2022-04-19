@@ -226,7 +226,9 @@ npx husky add .husky/pre-commit "npm run lint"
 
 # Feature
 
-[ ] 自动注入相应配置特别是 editor-config，这个应该放入到 @me-tool/cli 中
+[] stylelint + postcss
+[] 自动注入相应配置特别是 editor-config，这个应该放入到 @me-tool/cli 中
+[] react: eslint-plugin-jsx-a11y + eslint-plugin-react
 
 # Tips
 
