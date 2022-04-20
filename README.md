@@ -216,10 +216,10 @@ npx husky add .husky/pre-commit "npm run lint"
     "lint": "lint-staged"
   },
   "lint-staged": {
-    "*.ts?(x)": ["prettier --write", "eslint --cache --fix --ext .tsx --ext .ts", "git add"],
-    "*.js?(x)": ["prettier --write", "eslint --cache --fix --ext .js --ext .jsx", "git add"],
-    "*.vue": ["prettier --write", "eslint --cache --fix --ext .vue", "git add"],
-    "*.{json,md,yml,css}": ["prettier --write", "git add"]
+    "*.ts?(x)": ["prettier --write .", "eslint --cache --fix --ext .tsx --ext .ts .", "git add ."],
+    "*.js?(x)": ["prettier --write .", "eslint --cache --fix --ext .js --ext .jsx .", "git add ."],
+    "*.vue": ["prettier --write .", "eslint --cache --fix --ext .vue .", "git add ."],
+    "*.{json,md,yml,css}": ["prettier --write .", "git add ."]
   }
 }
 ```
