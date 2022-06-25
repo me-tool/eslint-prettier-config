@@ -12,6 +12,7 @@
 8. http://eslint.cn/docs/user-guide/configuring
 9. https://zhuanlan.zhihu.com/p/386373956
 10. https://zhuanlan.zhihu.com/p/347339865 (VSCode 中 ESLint、Prettier 配置冲突问题原因及解决方案)
+11. https://stylelint.io/user-guide/rules/list
 
 # 项目说明
 

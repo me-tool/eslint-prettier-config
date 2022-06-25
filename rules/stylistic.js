@@ -219,21 +219,24 @@
     'no-whitespace-before-property': 'error', // 禁止对象字面量中空格
     'nonblock-statement-body-position': ['error', 'beside', { overrides: {} }], // 强制单个语句的位置
     // 强制大括号内换行符的一致性
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: { minProperties: 4, multiline: true, consistent: true },
-        ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
-        ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
-        ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
-      },
-    ],
+    // 这里官方说 consistent = true 会导致 minProperties 失效，实际使用 minProperties 仍有作用，冲突时候可以直接去除
+    // 'object-curly-newline': [
+    //   'error',
+    //   {
+    //     ObjectExpression: { minProperties: 4, multiline: true, consistent: true },
+    //     ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+    //     ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+    //     ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+    //   },
+    // ],
+    'object-curly-newline': 'off',
     'object-curly-spacing': ['error', 'always'], // 要求花括号内有空格 (除了 {})
     'object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }], // 强制将对象的属性放在不同的行上
     'one-var': ['error', 'never'], // 强制函数中的变量要么一起声明要么分开声明
     'one-var-declaration-per-line': ['error', 'always'], // 要求或禁止在变量声明周围换行
     'operator-assignment': ['error', 'always'], // 要求或禁止尽可能地简化赋值操作
-    'operator-linebreak': ['error', 'before', { overrides: { '=': 'none' } }], // 强制操作符使用一致的换行符
+    // 'operator-linebreak': ['error', 'before', { overrides: { '=': 'none' } }], // 强制操作符使用一致的换行符
+    'operator-linebreak': 'off',
     // 要求或禁止块内填充
     'padded-blocks': [
       'error',

@@ -8,7 +8,8 @@ module.exports = {
   rules: {
     // ensure imports point to files/modules that can be resolved
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
+    // 'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
+    'import/no-unresolved': 'off', // due to use the alias-module to manage import will occur this rule
 
     // ensure named imports coupled with named exports
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
@@ -155,7 +156,8 @@ module.exports = {
 
     // Forbid require() calls with expressions
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    'import/no-dynamic-require': 'error',
+    // 'import/no-dynamic-require': 'error',
+    'import/no-dynamic-require': 'off', // will simplify the code and make logic complicated, but it's worth
 
     // prevent importing the submodules of other modules
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-internal-modules.md
